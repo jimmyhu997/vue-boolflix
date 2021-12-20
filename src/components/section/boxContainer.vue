@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div v-for="(movie, index) in database.result.data.results" :key="index">
+  <div class="container" v-if="database.result != null">
+    <div  v-for="(movie, index) in database.result.data.results" :key="index">
      <Box :contentobj="movie" />
     </div>
   </div>
@@ -15,10 +15,9 @@ export default {
       Box,
     },
     data(){
-        return{
-            database,
-            test: [1,2,3,4,5]
-        }
+      return{
+        database,
+      }
     }
 }
 </script>
