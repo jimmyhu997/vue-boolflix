@@ -20,12 +20,12 @@ export default {
   data(){
     return{
       database,
-      test: null,
     }
   },
   methods: {
 
   },
+  // vengo visualizzati i più popolari 
   created(){
     axios.get('https://api.themoviedb.org/3/movie/popular', {
       params: {
@@ -34,7 +34,10 @@ export default {
       }
     })
     .then((prova) => {
-        this.database.result = prova
+        this.database.result = prova.data
+        prova.data.results.forEach(element => {
+          this.database.displayed.push(element)
+        });
     })
     .catch((error) => {
       console.log(error)
